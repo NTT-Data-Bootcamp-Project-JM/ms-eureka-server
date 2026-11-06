@@ -13,10 +13,3 @@ eureka:
     fetch-registry: false
   server:
     eviction-interval-timer-in-ms: 5000
-
-springdoc:
-  api-docs:
-    enabled: false
-  swagger-ui:
-    url: /openapi.yaml
-    disable-swagger-default-url: true
