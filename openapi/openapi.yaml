@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: Eureka server
+  description: Service registry and dashboard. Business services register here and
+    the gateway resolves them by name.
+  version: 1.0.0
+servers:
+- url: http://127.0.0.1:8761
+  description: Generated server url
+paths:
+  /:
+    get:
+      summary: Open the Eureka dashboard
+      operationId: open-dashboard
+      responses:
+        "200":
+          description: Open the Eureka dashboard
+  /eureka/apps:
+    get:
+      summary: List registered applications
+      operationId: list-applications
+      responses:
+        "200":
+          description: List registered applications
+  /eureka/apps/{appId}:
+    get:
+      summary: List instances of one application
+      operationId: list-instances
+      responses:
+        "200":
+          description: List instances of one application
+    post:
+      summary: Register an instance
+      operationId: register-instance
+      responses:
+        "200":
+          description: Register an instance
+    parameters:
+    - name: appId
+      in: path
+      description: Application name
+      required: true
+      schema:
+        type: string
+  /eureka/apps/{appId}/{instanceId}:
+    get:
+      summary: Read one instance
+      operationId: read-instance
+      responses:
+        "200":
+          description: Read one instance
+    put:
+      summary: Renew the instance lease
+      operationId: renew-instance
+      responses:
+        "200":
+          description: Renew the instance lease
+    delete:
+      summary: Deregister the instance
+      operationId: deregister-instance
+      responses:
+        "200":
+          description: Deregister the instance
+    parameters:
+    - name: appId
+      in: path
+      description: Application name
+      required: true
+      schema:
+        type: string
+    - name: instanceId
+      in: path
+      description: Instance identifier
+      required: true
+      schema:
+        type: string
+  /eureka/apps/{appId}/{instanceId}/status:
+    put:
+      summary: Override the instance status
+      operationId: override-status
+      responses:
+        "200":
+          description: Override the instance status
+    delete:
+      summary: Remove the status override
+      operationId: clear-status
+      responses:
+        "200":
+          description: Remove the status override
+    parameters:
+    - name: appId
+      in: path
+      description: Application name
+      required: true
+      schema:
+        type: string
+    - name: instanceId
+      in: path
+      description: Instance identifier
+      required: true
+      schema:
+        type: string
+components: {}

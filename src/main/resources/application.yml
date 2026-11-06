@@ -13,3 +13,7 @@ eureka:
     fetch-registry: false
   server:
     eviction-interval-timer-in-ms: 5000
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
